@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <description>This email alert is sending email to leads who contacted for salesforce development course</description>
+        <name>YTC_Inquiry_for_Salesforce_Developer</name>
+        <label>YTC Inquiry for Salesforce Developer</label>
+        <locationX>50</locationX>
+        <locationY>455</locationY>
+        <actionName>Lead.YTC_Inquiry_Salesforce_Developer</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <apiVersion>57.0</apiVersion>
+    <decisions>
+        <description>This decision will identify course and send emails accordingly.</description>
+        <name>Condition_for_course_selection</name>
+        <label>Condition for course selection</label>
+        <locationX>270</locationX>
+        <locationY>335</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Sending_email_for_salesforce_developer_course</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Course__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Salesforce Development</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>YTC_Inquiry_for_Salesforce_Developer</targetReference>
+            </connector>
+            <label>Sending email for salesforce developer course</label>
+        </rules>
+        <rules>
+            <name>Sending_email_for_Salesforce_Admin</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Course__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Salesforce Admin</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Sending email for Salesforce Admin</label>
+        </rules>
+    </decisions>
+    <description>This flow is sending emails to leads for inquiry.</description>
+    <environments>Default</environments>
+    <interviewLabel>YTC Inquiry email alerts {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>YTC Inquiry email alerts</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>144</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Condition_for_course_selection</targetReference>
+        </connector>
+        <object>Lead</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>
