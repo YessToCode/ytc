@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Javascript_Temp</name>
+        <label>Javascript Temp</label>
+        <locationX>1370</locationX>
+        <locationY>575</locationY>
+        <actionName>Lead.YTC_Inquiry_Java_Programming</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <actionCalls>
+        <name>YTC_admin_alert</name>
+        <label>YTC admin alert</label>
+        <locationX>314</locationX>
+        <locationY>575</locationY>
+        <actionName>Lead.YTC_Inquiry_Salesforce_Admin</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <actionCalls>
+        <description>This email alert is sending email to leads who contacted for salesforce development course</description>
+        <name>YTC_Inquiry_for_Salesforce_Developer</name>
+        <label>YTC Inquiry for Salesforce Developer</label>
+        <locationX>50</locationX>
+        <locationY>575</locationY>
+        <actionName>Lead.YTC_Inquiry_Salesforce_Developer</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <actionCalls>
+        <name>Ytc_inquiry_notification_Admin</name>
+        <label>Ytc_inquiry_notification_Admin</label>
+        <locationX>842</locationX>
+        <locationY>335</locationY>
+        <actionName>Lead.Ytc_inquiry_notification_for_Admin</actionName>
+        <actionType>emailAlert</actionType>
+        <connector>
+            <targetReference>Condition_for_course_selection</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <actionCalls>
+        <name>YTC_java_programming</name>
+        <label>YTC java programming</label>
+        <locationX>842</locationX>
+        <locationY>575</locationY>
+        <actionName>Lead.YTC_Inquiry_Java_Programming</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <actionCalls>
+        <name>YTC_kids_coding_inquiry</name>
+        <label>YTC kids coding inquiry</label>
+        <locationX>1106</locationX>
+        <locationY>575</locationY>
+        <actionName>Lead.YTC_Inquiry_Kids_Coding_Course</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <actionCalls>
+        <name>ytc_python_programming</name>
+        <label>ytc python programming</label>
+        <locationX>578</locationX>
+        <locationY>575</locationY>
+        <actionName>Lead.YTC_Inquiry_Python_Programming</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <apiVersion>57.0</apiVersion>
+    <decisions>
+        <description>This decision will identify course and send emails accordingly.</description>
+        <name>Condition_for_course_selection</name>
+        <label>Condition for course selection</label>
+        <locationX>842</locationX>
+        <locationY>455</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Sending_email_for_salesforce_developer_course</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Course__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Salesforce Development</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>YTC_Inquiry_for_Salesforce_Developer</targetReference>
+            </connector>
+            <label>Sending email for salesforce developer course</label>
+        </rules>
+        <rules>
+            <name>Sending_email_for_Salesforce_Admin</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Course__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Salesforce Admin</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>YTC_admin_alert</targetReference>
+            </connector>
+            <label>Sending email for Salesforce Admin</label>
+        </rules>
+        <rules>
+            <name>Sending_email_for_Python_Programming</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Course__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Python Programming</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>ytc_python_programming</targetReference>
+            </connector>
+            <label>Sending email for Python Programming</label>
+        </rules>
+        <rules>
+            <name>Sending_email_for_Java_Programming</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Course__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Java Programming</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>YTC_java_programming</targetReference>
+            </connector>
+            <label>Sending email for Java Programming</label>
+        </rules>
+        <rules>
+            <name>Send_Email_for_Kids_coding_course</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Course__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Kids Coding Course</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>YTC_kids_coding_inquiry</targetReference>
+            </connector>
+            <label>Send Email for Kids coding course</label>
+        </rules>
+        <rules>
+            <name>Sending_email_for_JavaScript</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Course__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>JavaScript</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Javascript_Temp</targetReference>
+            </connector>
+            <label>Sending email for JavaScript</label>
+        </rules>
+    </decisions>
+    <description>This flow is sending emails to leads for inquiry.</description>
+    <environments>Default</environments>
+    <interviewLabel>YTC Inquiry email alerts {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>YTC Inquiry email alerts</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>716</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Ytc_inquiry_notification_Admin</targetReference>
+        </connector>
+        <object>Lead</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>
