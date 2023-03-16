@@ -1,0 +1,6 @@
+New Lead Generated 
+
+Name : {!Lead.Name}
+Email : {!Lead.Email}
+Phone number: {!Lead.Phone}
+Course: {!Lead.Course__c}
