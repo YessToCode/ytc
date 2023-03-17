@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Kids Coding Course Inquiry Email</description>
+    <encodingKey>UTF-8</encodingKey>
+    <letterhead>YTC_letterhead</letterhead>
+    <name>YTC Inquiry Kids Coding Course</name>
+    <style>freeForm</style>
+    <subject>YessToCode Kids Coding Course</subject>
+    <textOnly>Hello {!Lead.Name},
+
+Thanks for contacting us for the Kids Coding Course.
+Our Executive will contact you soon.
+
+Regards,
+YessToCode</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>
