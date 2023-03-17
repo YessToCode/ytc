@@ -1,21 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <actionCalls>
-        <name>Javascript_Temp</name>
-        <label>Javascript Temp</label>
-        <locationX>1370</locationX>
-        <locationY>575</locationY>
-        <actionName>Lead.YTC_Inquiry_Java_Programming</actionName>
-        <actionType>emailAlert</actionType>
-        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
-        <inputParameters>
-            <name>SObjectRowId</name>
-            <value>
-                <elementReference>$Record.Id</elementReference>
-            </value>
-        </inputParameters>
-    </actionCalls>
-    <actionCalls>
         <name>YTC_admin_alert</name>
         <label>YTC admin alert</label>
         <locationX>314</locationX>
@@ -70,6 +55,21 @@
         <locationX>842</locationX>
         <locationY>575</locationY>
         <actionName>Lead.YTC_Inquiry_Java_Programming</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <actionCalls>
+        <name>YTC_js_developer_alert</name>
+        <label>YTC js developer alert</label>
+        <locationX>1370</locationX>
+        <locationY>575</locationY>
+        <actionName>Lead.YTC_javascript_developer_alert</actionName>
         <actionType>emailAlert</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
@@ -203,7 +203,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Javascript_Temp</targetReference>
+                <targetReference>YTC_js_developer_alert</targetReference>
             </connector>
             <label>Sending email for JavaScript</label>
         </rules>
