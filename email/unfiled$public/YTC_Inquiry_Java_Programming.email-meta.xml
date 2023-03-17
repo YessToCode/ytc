@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Java Programming Inquiry Email</description>
+    <encodingKey>UTF-8</encodingKey>
+    <letterhead>YTC_letterhead</letterhead>
+    <name>YTC Inquiry Java Programming</name>
+    <style>freeForm</style>
+    <subject>YessToCode  Java Programming</subject>
+    <textOnly>Hello {!Lead.Name},
+
+Thanks for contacting us for Java Programming course.
+Our Executive will contact you soon.
+
+Regards,
+YessToCode</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>
